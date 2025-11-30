@@ -67,13 +67,6 @@
     /* Vintage decorative footer stripe */
     .footer-stripe{height:10px;background:linear-gradient(90deg,var(--deep-red),var(--accent-red));border-radius:6px;margin:10px auto;width:160px}
 
-    /* snow animation (CSS-only) */
-    .snow{pointer-events:none;position:fixed;left:0;top:0;right:0;bottom:0;z-index:400}
-    .snow:after{content:'';position:absolute;left:-10%;top:-20%;width:120%;height:140%;background-image:
-      radial-gradient(white 1px, transparent 1px),
-      radial-gradient(white 1px, transparent 1px);
-      background-size:6px 6px, 9px 9px;opacity:0.75;animation:snow 18s linear infinite}
-    @keyframes snow{from{transform:translateY(-10%)} to{transform:translateY(110%)}}
 
     /* responsive tweaks */
     @media (max-width:560px){header .title{font-size:36px} .card img{height:140px}}
