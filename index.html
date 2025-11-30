@@ -87,6 +87,13 @@
 
     /* subtle paper border ornament */
     .ornament{position:absolute;left:8px;bottom:8px;opacity:0.12;width:160px}
+
+    .banner-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 4px solid rgba(0,0,0,0.1);
+    }
   </style>
 
   <script>
@@ -112,12 +119,8 @@
 </head>
 <body>
   <div class="snow" aria-hidden="true"></div>
-  <header class="hero">
-    <div style="position:relative;max-width:1200px;margin:0 auto">
-      <h1 class="title">Family Christmas Memories</h1>
-      <div class="ribbon">Holiday Edition</div>
-      <p class="subtitle">A warm collection of animated family stories — vintage style</p>
-    </div>
+  <header class="hero" style="padding:0;">
+    <img src="assets/banner.jpg" alt="Site Banner" class="banner-image">
   </header>
 
   <main class="content">
