@@ -187,11 +187,14 @@
   const playBtn = document.getElementById('playButton');
 
   playBtn.addEventListener('click', () => {
-    playBtn.style.display = 'none';
-    video.setAttribute('controls', 'true');
-    video.play();
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
   });
 </script>
+
 
 </body>
 </html>
