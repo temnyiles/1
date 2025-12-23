@@ -3,32 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Animation 1 — Family Christmas Memories</title>
-  <link href="../assets/styles.css" rel="stylesheet">
+  <title>Фильм Четвёртый</title>
+
+  <!-- Full embedded styling so this page works anywhere -->
+  <style>
+    :root{
+      --cream:#fbf6f0;
+      --paper:#f3e9df;
+      --deep-red:#9f0713;
+      --accent-red:#d52b1e;
+      --gold:#c99a48;
+      --muted-green:#2f5d3a;
+      --card-shadow: 0 8px 20px rgba(15,10,8,0.12);
+      --radius:16px;
+      --max-width:1100px;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:#811414;
+      color:#2b2b2b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+    }
+
+    header.hero{
+      padding:28px 20px;
+      text-align:center;
+      background:none;
+      color:var(--deep-red)
+    }
+
+    .title{
+      font-family:'Great Vibes', serif;
+      font-size:42px;
+      margin:0;
+      color:var(--cream);
+    }
+
+    .subtitle{
+      margin:6px 0 0;
+      color:var(--paper);
+      font-weight:500;
+    }
+
+    main.content{
+      max-width:var(--max-width);
+      margin:28px auto;
+      padding:0 20px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,#fff, #fff9f6);
+      padding:14px;
+      border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+      border:1px solid rgba(0,0,0,0.04);
+    }
+
+    .video-frame{
+      background:linear-gradient(180deg,#070606, #2b0b0b);
+      border-radius:12px;
+      padding:12px;
+      color:#fff;
+    }
+
+    /* Responsive video */
+    .video-frame video{
+      width:100%;
+      height:auto;
+      border-radius:8px;
+      display:block;
+      max-height:70vh;
+      background:black;
+    }
+
+    /* Text section */
+    .intro{
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+      padding:18px;
+      border-radius:12px;
+      box-shadow:var(--card-shadow);
+      margin-top:18px;
+    }
+
+    .intro h2{
+      margin:0 0 6px;
+      color:var(--deep-red);
+    }
+
+    .muted{
+      color:#6b5a52;
+    }
+
+    footer{
+      max-width:var(--max-width);
+      margin:36px auto 80px;
+      text-align:center;
+      color:#f3e9df;
+      font-size:14px;
+    }
+
+    /* Responsive changes for Mobile */
+    @media (max-width:600px){
+
+      .title{
+        font-size:30px;
+      }
+
+      .subtitle{
+        font-size:16px;
+      }
+
+      .video-frame{
+        padding:8px;
+      }
+
+      .video-frame video{
+        max-height:50vh;
+        border-radius:6px;
+      }
+
+      .card{
+        padding:10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="hero">
-    <h1 class="title">Animation 1 — Christmas Eve</h1>
-    <p class="subtitle">A short animated story</p>
+    <h1 class="title">Фильм Четвёртый.</h1>
+    <h1 class="title">Как мы были на фестивале "Русское Лето"</h1>
+    <p class="subtitle"></p>
   </header>
 
   <main class="content">
-    <section class="card video-frame" data-video-src="/videos/animation1.mp4">
-      <!-- If /videos/animation1.mp4 exists it will play here. Otherwise the placeholder message appears. -->
+
+    <!-- VIDEO SECTION -->
+    <section class="card video-frame">
+      <video controls playsinline preload="metadata" poster="../assets/placeholder.jpg">
+        <!-- IMPORTANT: This path matches your file: assets/videos/animation4.mp4 -->
+        <source src="../assets/videos/animation4.mp4" type="video/mp4">
+        <p style="color:white;text-align:center">Video unavailable. Make sure the file exists at <code>/assets/videos/animation4.mp4</code>.</p>
+      </video>
     </section>
 
-    <section class="intro" style="margin-top:18px">
-      <h2>About this memory</h2>
-      <p>Write a short note or transcript about the animation. This text will also be printed in the gift book under the QR code if you want.</p>
-    </section>
-
-    <section style="margin-top:18px;text-align:center">
-      <p class="muted">Share this page using the URL — this is the link you'll encode into a QR code for the printed book.</p>
+    <!-- TEXT DESCRIPTION -->
+    <section class="intro">
+      <h2>Об этом воспоминании</h2>
+      <p>Одно из многочисленных ярких событий лета 2025! ☀️🎪</p>
     </section>
   </main>
 
   <footer>
-    <p>Family Christmas Memories</p>
+    <p>Family Christmas Memories 2025 | Munchkin ltd.</p>
   </footer>
+
 </body>
 </html>
