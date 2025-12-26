@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    /* --- Vintage Christmas blended theme (Coca-Cola + Kinder) --- */
     :root{
       --cream:#fbf6f0;
       --paper:#f3e9df;
@@ -23,93 +22,135 @@
       --radius:16px;
       --max-width:1100px;
     }
-    *{box-sizing:border-box}
-    html,body{background:#811414;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
 
-    /* subtle paper texture using layered gradients */
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      background:#811414;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+
     body{
       background-image:
         radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
         linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
       background-size: 18px 18px, 100% 100%;
       color:#2b2b2b;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       padding-bottom:60px;
     }
 
-    header.hero{position:relative;text-align:center;padding:0;background:none;border-bottom:none}}
-    header .title{font-family:'Great Vibes', serif;color:var(--deep-red);font-size:56px;margin:0 0 6px}
-    header .subtitle{margin:0;color:#5b3b35;font-weight:500}
+    /* ---------- HERO / BANNER ---------- */
 
-    /* decorative ribbon */
-    .ribbon{display:inline-block;margin-top:18px;padding:6px 14px;background:linear-gradient(90deg,var(--accent-red),var(--deep-red));color:#fff;border-radius:999px;font-weight:700;letter-spacing:0.6px}
+    header.hero{
+      width:100%;
+      height:360px;
+      overflow:hidden;
+      position:relative;
+      border-bottom:4px solid rgba(0,0,0,0.1);
+    }
 
-    main.content{max-width:var(--max-width);margin:28px auto;padding:0 20px}
-    .intro{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
-    .intro h2{margin:0 0 6px;color:var(--deep-red)}
-    .intro p{margin:0;color:#444}
+    .banner-video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
 
-    /* Grid of animation cards */
-    .animations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:20px}
-    .card{background:linear-gradient(180deg,#fff, #fff9f6);padding:14px;border-radius:var(--radius);box-shadow:var(--card-shadow);border:1px solid rgba(0,0,0,0.04);position:relative;overflow:hidden}
-    .card img{width:100%;height:160px;object-fit:cover;border-radius:10px}
-    .card h3{margin:10px 0 6px;color:var(--deep-red)}
-    .card p{margin:0 0 12px;color:#555}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(180deg,var(--accent-red),var(--deep-red));color:#fff;text-decoration:none;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.12)}
+    /* ---------- CONTENT ---------- */
 
-    /* small badge for QR hint */
-    .qr-hint{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.9);padding:6px;border-radius:10px;font-size:12px;border:1px solid rgba(0,0,0,0.06)}
+    main.content{
+      max-width:var(--max-width);
+      margin:28px auto;
+      padding:0 20px;
+    }
 
-    footer{max-width:var(--max-width);margin:36px auto 80px;text-align:center;color:#6b4f4a;font-size:14px}
+    .intro{
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+      padding:18px;
+      border-radius:12px;
+      box-shadow:var(--card-shadow);
+    }
 
-    /* Vintage decorative footer stripe */
-    .footer-stripe{height:10px;background:linear-gradient(90deg,var(--deep-red),var(--accent-red));border-radius:6px;margin:10px auto;width:160px}
+    .intro h2{
+      margin:0 0 6px;
+      color:var(--deep-red);
+    }
 
-    /* responsive tweaks */
-    @media (max-width:560px){header .title{font-size:36px} .card img{height:140px}}
+    .intro p{
+      margin:0;
+      color:#444;
+      line-height:1.6;
+    }
 
-    /* small utility */
-    .muted{color:#6b5a52}
+    .animations-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+      margin-top:20px;
+    }
 
-    /* VIDEO FRAME styling for animation pages when created */
-    .video-frame{background:linear-gradient(180deg,#070606, #2b0b0b);border-radius:12px;padding:12px;color:#fff}
-    .video-frame video{width:100%;height:auto;border-radius:8px;display:block}
+    .card{
+      background:linear-gradient(180deg,#fff, #fff9f6);
+      padding:14px;
+      border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+      border:1px solid rgba(0,0,0,0.04);
+    }
 
-    /* subtle paper border ornament */
-    .ornament{position:absolute;left:8px;bottom:8px;opacity:0.12;width:160px}
+    .card img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:10px;
+    }
 
-    .banner-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-bottom: 4px solid rgba(0,0,0,0.1);
+    .card h3{
+      margin:10px 0 6px;
+      color:var(--deep-red);
+    }
+
+    .card p{
+      margin:0 0 12px;
+      color:#555;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent-red),var(--deep-red));
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 6px 12px rgba(0,0,0,0.12);
+    }
+
+    footer{
+      max-width:var(--max-width);
+      margin:36px auto 80px;
+      text-align:center;
+      color:#6b4f4a;
+      font-size:14px;
+    }
+
+    .footer-stripe{
+      height:10px;
+      background:linear-gradient(90deg,var(--deep-red),var(--accent-red));
+      border-radius:6px;
+      margin:10px auto;
+      width:160px;
+    }
+
+    @media (max-width:560px){
+      header.hero{height:240px}
+      .card img{height:140px}
     }
   </style>
-
-  <script>
-    // Simple helper: replace elements with data-video-src attribute into a playable video element when file exists.
-    // Usage: <div class="video-frame" data-video-src="/videos/yourfile.mp4"></div>
-    document.addEventListener('DOMContentLoaded',()=>{
-      document.querySelectorAll('[data-video-src]').forEach(el=>{
-        const src=el.getAttribute('data-video-src');
-        if(!src) return;
-        // create video element but don't autoplay
-        const video=document.createElement('video');
-        video.setAttribute('controls','');
-        video.setAttribute('playsinline','');
-        video.src=src; // when you drop the mp4 into /videos, this will work
-        video.onerror = ()=>{
-          // if file missing, show placeholder message
-          el.innerHTML = '<div style="padding:28px 12px;border-radius:8px;background:linear-gradient(180deg,#fff8f4,#fff);color:#6b4f4a;text-align:center">Video placeholder<br><small class="muted">Drop an MP4 at '+src+'</small></div>';
-        };
-        el.appendChild(video);
-      });
-    });
-  </script>
 </head>
+
 <body>
-  <div class="snow" aria-hidden="true"></div>
+
   <header class="hero">
     <video
       class="banner-video"
@@ -121,67 +162,55 @@
     ></video>
   </header>
 
-
   <main class="content">
     <section class="intro">
       <h2>Добро пожаловать!</h2>
-      <p>Вот и закончился столь знаменательный для нашей семьи 2025 год. В этом году было много интересных событий и незабываемых моментов, и я очень надеюсь, что в наступающем 2026 мы сможем многого достичь и испытаем море позитивных эмоций! ✨\n\n Перед вами своего рода семейный альбом, который поможет вам вспомнить некоторые из важнейших событий уходящего года. Вы можете воспользоваться этой страницей или книгой в ваших руках для перехода к отдельному воспоминанию.</p>
+      <p>
+        Вот и закончился столь знаменательный для нашей семьи 2025 год.
+        В этом году было много интересных событий и незабываемых моментов,
+        и я очень надеюсь, что в наступающем 2026 мы сможем многого достичь
+        и испытаем море позитивных эмоций! ✨
+        <br><br>
+        Перед вами своего рода семейный альбом, который поможет вам вспомнить
+        некоторые из важнейших событий уходящего года.
+      </p>
     </section>
 
-    <section class="animations-grid" aria-live="polite">
+    <section class="animations-grid">
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 1">
+        <img src="assets/placeholder.jpg" alt="Animation 1">
         <h3>Фильм 1</h3>
         <p>Как коты в поезде ехали</p>
         <a class="btn" href="animations/animation1.html">Open</a>
       </div>
 
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 2">
+        <img src="assets/placeholder.jpg" alt="Animation 2">
         <h3>Фильм 2</h3>
         <p>Как кот цыплачка в театр водил</p>
         <a class="btn" href="animations/animation2.html">Open</a>
       </div>
-    
-      <!-- Animation 3 -->
+
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 3">
+        <img src="assets/placeholder.jpg" alt="Animation 3">
         <h3>Фильм 3</h3>
         <p>Противостояние</p>
         <a class="btn" href="animations/animation3.html">Open</a>
       </div>
-    
-      <!-- Animation 4 -->
+
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 4">
+        <img src="assets/placeholder.jpg" alt="Animation 4">
         <h3>Фильм 4</h3>
-        <p>Как мы были на фестивале "Русское Лето"</p>
+        <p>Как мы были на фестивале «Русское Лето»</p>
         <a class="btn" href="animations/animation4.html">Open</a>
-      </div>
-    
-      <!-- Animation 5 -->
-      <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 5">
-        <h3>Animation 5 — Caroling Night</h3>
-        <p>Singing carols around the neighborhood. (Placeholder)</p>
-        <a class="btn" href="animations/animation5.html">Open</a>
-      </div>
-    
-      <!-- Animation 6 -->
-      <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 6">
-        <h3>Animation 6 — Fireplace Stories</h3>
-        <p>Gathered around telling old family stories. (Placeholder)</p>
-        <a class="btn" href="animations/animation6.html">Open</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-stripe" aria-hidden="true"></div>
-    <p>От Манчкина с Любовью • Vintage Christmas Сollection</p>
+    <div class="footer-stripe"></div>
+    <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
   </footer>
-
 
 </body>
 </html>
