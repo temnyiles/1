@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Family Christmas Memories — Home</title>
 
   <!-- Fonts -->
@@ -12,14 +12,18 @@
 
   <style>
     :root{
+      --cream:#fbf6f0;
+      --paper:#f3e9df;
       --deep-red:#9f0713;
       --accent-red:#d52b1e;
+      --gold:#c99a48;
+      --muted-green:#2f5d3a;
       --card-shadow: 0 8px 20px rgba(15,10,8,0.12);
       --radius:16px;
       --max-width:1100px;
     }
 
-    *{ box-sizing:border-box }
+    *{box-sizing:border-box}
 
     html,body{
       margin:0;
@@ -36,20 +40,19 @@
       padding-bottom:60px;
     }
 
-    /* ---------- HERO VIDEO (НЕ ОБРЕЗАЕТСЯ) ---------- */
+    /* ---------- HERO / BANNER ---------- */
 
     header.hero {
       width: 100%;
-      background: #000;
+      height: auto;
+      overflow: hidden;
     }
 
     .banner-video {
-      display: block;
       width: 100%;
-      height: auto;              /* ВАЖНО */
-      max-height: 90vh;          /* чтобы не занимало весь экран */
-      object-fit: contain;       /* НИЧЕГО НЕ ОБРЕЗАЕТ */
-    }
+      height: auto;
+      object-fit: contain;
+    }}
 
     /* ---------- CONTENT ---------- */
 
@@ -60,7 +63,7 @@
     }
 
     .intro{
-      background:rgba(255,255,255,0.9);
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
       padding:18px;
       border-radius:12px;
       box-shadow:var(--card-shadow);
@@ -77,20 +80,19 @@
       line-height:1.6;
     }
 
-    /* ---------- GRID ---------- */
-
     .animations-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
       gap:20px;
       margin-top:20px;
     }
 
     .card{
-      background:#fff;
+      background:linear-gradient(180deg,#fff, #fff9f6);
       padding:14px;
       border-radius:var(--radius);
       box-shadow:var(--card-shadow);
+      border:1px solid rgba(0,0,0,0.04);
     }
 
     .card img{
@@ -118,6 +120,7 @@
       color:#fff;
       text-decoration:none;
       font-weight:700;
+      box-shadow:0 6px 12px rgba(0,0,0,0.12);
     }
 
     footer{
@@ -136,16 +139,9 @@
       width:160px;
     }
 
-    /* ---------- MOBILE ---------- */
-
-    @media (max-width:600px){
-      .animations-grid{
-        grid-template-columns:1fr;
-      }
-
-      .card img{
-        height:140px;
-      }
+    @media (max-width:560px){
+      header.hero{height:240px}
+      .card img{height:140px}
     }
   </style>
 </head>
@@ -157,8 +153,8 @@
       class="banner-video"
       src="assets/banner.mp4"
       autoplay
-      muted
       loop
+      muted
       playsinline
     ></video>
   </header>
@@ -170,37 +166,65 @@
         Вот и закончился столь знаменательный для нашей семьи 2025 год.
         В этом году было много интересных событий и незабываемых моментов,
         и я очень надеюсь, что в наступающем 2026 мы сможем многого достичь
-        и испытаем море позитивных эмоций!
+        и испытаем море позитивных эмоций! ✨
+        <br><br>
+        Перед вами своего рода семейный альбом, который поможет вам вспомнить
+        некоторые из важнейших событий уходящего года.
       </p>
     </section>
 
-    <section class="animations-grid">
+    <section class="animations-grid" aria-live="polite">
       <div class="card">
-        <img src="assets/placeholder.jpg">
+        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 1">
         <h3>Фильм 1</h3>
         <p>Как коты в поезде ехали</p>
         <a class="btn" href="animations/animation1.html">Open</a>
       </div>
 
       <div class="card">
-        <img src="assets/placeholder.jpg">
+        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 2">
         <h3>Фильм 2</h3>
         <p>Как кот цыплачка в театр водил</p>
         <a class="btn" href="animations/animation2.html">Open</a>
       </div>
 
+      <!-- Animation 3 -->
       <div class="card">
-        <img src="assets/placeholder.jpg">
+        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 3">
         <h3>Фильм 3</h3>
         <p>Противостояние</p>
         <a class="btn" href="animations/animation3.html">Open</a>
+      </div>
+
+      <!-- Animation 4 -->
+      <div class="card">
+        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 4">
+        <h3>Фильм 4</h3>
+        <p>Как мы были на фестивале "Русское Лето"</p>
+        <a class="btn" href="animations/animation4.html">Open</a>
+      </div>
+
+      <!-- Animation 5 -->
+      <div class="card">
+        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 5">
+        <h3>Фильм 5</h3>
+        <p>Нежданное Путешествие</p>
+        <a class="btn" href="animations/animation5.html">Open</a>
+      </div>
+
+      <!-- Animation 6 -->
+      <div class="card">
+        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 6">
+        <h3>Animation 6 — Fireplace Stories</h3>
+        <p>Gathered around telling old family stories. (Placeholder)</p>
+        <a class="btn" href="animations/animation6.html">Open</a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-stripe"></div>
-    <p>От Манчкина с Любовью</p>
+    <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
   </footer>
 
 </body>
