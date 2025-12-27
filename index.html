@@ -11,13 +11,9 @@
 
   <style>
     :root{
-      --cream:#fbf6f0;
-      --paper:#f3e9df;
       --deep-red:#9f0713;
       --accent-red:#d52b1e;
-      --gold:#c99a48;
-      --muted-green:#2f5d3a;
-      --card-shadow: 0 8px 20px rgba(15,10,8,0.12);
+      --card-shadow:0 8px 20px rgba(15,10,8,0.12);
       --radius:16px;
       --max-width:1100px;
     }
@@ -31,10 +27,6 @@
     }
 
     body{
-      background-image:
-        radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-      background-size: 18px 18px, 100% 100%;
       color:#2b2b2b;
       padding-bottom:60px;
     }
@@ -44,6 +36,7 @@
     .video-banner-wrapper{
       width:100%;
       background:#000;
+      line-height:0;
     }
 
     .video-banner-wrapper video{
@@ -61,12 +54,11 @@
     }
 
     .intro{
-      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      background:rgba(255,255,255,0.9);
       padding:24px;
       border-radius:12px;
       box-shadow:var(--card-shadow);
-      backdrop-filter: blur(4px);
-      margin-top: 20px;
+      margin-top:20px;
     }
 
     .intro h2{
@@ -88,16 +80,15 @@
     }
 
     .card{
-      background:linear-gradient(180deg,#fff, #fff9f6);
+      background:#fff;
       padding:14px;
       border-radius:var(--radius);
       box-shadow:var(--card-shadow);
-      border:1px solid rgba(0,0,0,0.04);
-      transition: transform 0.2s ease;
+      transition:transform 0.2s ease;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
+    .card:hover{
+      transform:translateY(-4px);
     }
 
     .card img{
@@ -115,7 +106,7 @@
     .card p{
       margin:0 0 12px;
       color:#555;
-      font-size: 0.95rem;
+      font-size:0.95rem;
     }
 
     .btn{
@@ -126,7 +117,6 @@
       color:#fff;
       text-decoration:none;
       font-weight:700;
-      box-shadow:0 4px 10px rgba(0,0,0,0.15);
     }
 
     footer{
@@ -135,46 +125,41 @@
       text-align:center;
       color:#fff;
       font-size:14px;
-      opacity: 0.9;
+      opacity:0.9;
     }
 
-    .footer-stripe{
-      height:10px;
-      background:linear-gradient(90deg,var(--deep-red),var(--accent-red));
-      border-radius:6px;
-      margin:10px auto;
-      width:160px;
-    }
-
-    @media (max-width: 560px){
+    @media (max-width:560px){
       .card img{height:160px}
-      .animations-grid { grid-template-columns:1fr }
+      .animations-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Video Banner -->
+  <!-- VIDEO BANNER -->
   <div class="video-banner-wrapper">
     <video
-      autoplay
+      id="bannerVideo"
       muted
+      autoplay
       loop
       playsinline
-      preload="auto">
+      preload="auto"
+    >
       <source src="assets/banner.mp4" type="video/mp4">
     </video>
   </div>
 
   <main class="content">
+
     <section class="intro">
       <h2>Добро пожаловать!</h2>
       <p>
         Вот и закончился столь знаменательный для нашей семьи 2025 год.
         В этом году было много интересных событий и незабываемых моментов,
         и я очень надеюсь, что в наступающем 2026 мы сможем многого достичь
-        и испытаем море позитивных эмоций! ✨
+        и испытаем море позитивных эмоций!
         <br><br>
         Перед вами своего рода семейный альбом, который поможет вам вспомнить
         некоторые из важнейших событий уходящего года.
@@ -182,6 +167,7 @@
     </section>
 
     <section class="animations-grid">
+
       <div class="card">
         <img src="assets/placeholder.jpg" alt="Фильм 1">
         <h3>Фильм 1</h3>
@@ -206,14 +192,14 @@
       <div class="card">
         <img src="assets/placeholder.jpg" alt="Фильм 4">
         <h3>Фильм 4</h3>
-        <p>Как мы были на фестивале "Русское Лето"</p>
+        <p>Как мы были на фестивале «Русское Лето»</p>
         <a class="btn" href="animations/animation4.html">Open</a>
       </div>
 
       <div class="card">
         <img src="assets/placeholder.jpg" alt="Фильм 5">
         <h3>Фильм 5</h3>
-        <p>Нежданное Путешествие</p>
+        <p>Нежданное путешествие</p>
         <a class="btn" href="animations/animation5.html">Open</a>
       </div>
 
@@ -223,13 +209,31 @@
         <p>Fireplace Stories — Gathered around telling old family stories.</p>
         <a class="btn" href="animations/animation6.html">Open</a>
       </div>
+
     </section>
   </main>
 
   <footer>
-    <div class="footer-stripe"></div>
     <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
   </footer>
+
+  <!-- ANDROID / OPERA AUTOPLAY FIX -->
+  <script>
+    const video = document.getElementById('bannerVideo');
+
+    function forcePlay() {
+      video.muted = true;
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {});
+      }
+    }
+
+    window.addEventListener('load', forcePlay);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) forcePlay();
+    });
+  </script>
 
 </body>
 </html>
