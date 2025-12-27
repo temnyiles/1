@@ -39,21 +39,50 @@
       padding-bottom:60px;
     }
 
-    /* ---------- HERO / BANNER ---------- */
-
-    header.hero {
+    /* ---------- VIDEO BANNER ---------- */
+    .video-banner-wrapper {
       width: 100%;
-      height: auto;
-      line-height: 0; /* Removes bottom whitespace gap */
+      height: 60vh; /* Reduced height from full screen */
+      max-height: 500px; /* Maximum height on large screens */
+      min-height: 300px; /* Minimum height on small screens */
+      position: relative;
       overflow: hidden;
-      background: #000; /* Fallback color */
+      background: #000;
     }
 
-    .banner-video {
+    .video-banner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
+      height: 100%;
+      object-fit: cover; /* Ensures video covers the area */
+      opacity: 0.9;
+    }
+
+    /* Fallback for browsers that don't support object-fit */
+    @supports not (object-fit: cover) {
+      .video-banner {
+        width: 100%;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+      }
+    }
+
+    /* Fade effect at bottom */
+    .video-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
+      pointer-events: none;
     }
 
     /* ---------- CONTENT ---------- */
@@ -70,6 +99,7 @@
       border-radius:12px;
       box-shadow:var(--card-shadow);
       backdrop-filter: blur(4px);
+      margin-top: 20px;
     }
 
     .intro h2{
@@ -136,7 +166,7 @@
       max-width:var(--max-width);
       margin:36px auto 80px;
       text-align:center;
-      color:#fff; /* Changed to white for better contrast on red background */
+      color:#fff;
       font-size:14px;
       opacity: 0.9;
     }
@@ -149,19 +179,49 @@
       width:160px;
     }
 
-    @media (max-width:560px){
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .video-banner-wrapper {
+        height: 40vh; /* Shorter on mobile */
+        max-height: 350px;
+        min-height: 250px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .video-banner-wrapper {
+        height: 35vh;
+        max-height: 300px;
+        min-height: 200px;
+      }
+      
       .card img{height:160px}
+      
+      .animations-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+      }
+    }
+
+    /* For very small screens */
+    @media (max-width: 400px) {
+      .video-banner-wrapper {
+        height: 30vh;
+        min-height: 180px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <video autoplay loop muted playsinline class="back-video">
-    <source src="assets/banner.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
+  <!-- Video Banner Section -->
+  <div class="video-banner-wrapper">
+    <video class="video-banner" preload="auto" autoplay loop muted playsinline>
+      <source src="assets/banner.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-fade"></div>
+  </div>
 
   <main class="content">
     <section class="intro">
@@ -226,6 +286,31 @@
     <div class="footer-stripe"></div>
     <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
   </footer>
+
+  <script>
+    // JavaScript to ensure video plays on mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.querySelector('.video-banner');
+      
+      // Force video to play on mobile
+      video.play().catch(function(error) {
+        // Auto-play was prevented
+        console.log('Video autoplay prevented:', error);
+        
+        // Show play button or handle as needed
+        video.controls = true;
+      });
+      
+      // Pause video when page is not visible (to save resources)
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          video.pause();
+        } else {
+          video.play().catch(e => console.log('Playback error:', e));
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
