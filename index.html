@@ -40,16 +40,6 @@
     }
 
     /* ---------- VIDEO BANNER ---------- */
-    .video-banner-wrapper {
-      width: 100%;
-      height: 60vh; /* Reduced height from full screen */
-      max-height: 500px; /* Maximum height on large screens */
-      min-height: 300px; /* Minimum height on small screens */
-      position: relative;
-      overflow: hidden;
-      background: #000;
-    }
-
     .video-banner {
       position: absolute;
       top: 50%;
@@ -216,7 +206,7 @@
 
   <!-- Video Banner Section -->
   <div class="video-banner-wrapper">
-    <video class="video-banner" preload="auto" autoplay loop muted playsinline>
+    <video class="video-banner" autoplay loop muted>
       <source src="assets/banner.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -286,31 +276,6 @@
     <div class="footer-stripe"></div>
     <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
   </footer>
-
-  <script>
-    // JavaScript to ensure video plays on mobile
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.querySelector('.video-banner');
-      
-      // Force video to play on mobile
-      video.play().catch(function(error) {
-        // Auto-play was prevented
-        console.log('Video autoplay prevented:', error);
-        
-        // Show play button or handle as needed
-        video.controls = true;
-      });
-      
-      // Pause video when page is not visible (to save resources)
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-          video.pause();
-        } else {
-          video.play().catch(e => console.log('Playback error:', e));
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
