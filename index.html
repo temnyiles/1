@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Family Christmas Memories — Home</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -45,14 +44,17 @@
     header.hero {
       width: 100%;
       height: auto;
+      line-height: 0; /* Removes bottom whitespace gap */
       overflow: hidden;
+      background: #000; /* Fallback color */
     }
 
     .banner-video {
       width: 100%;
       height: auto;
-      object-fit: contain;
-    }}
+      display: block;
+      object-fit: cover;
+    }
 
     /* ---------- CONTENT ---------- */
 
@@ -63,10 +65,11 @@
     }
 
     .intro{
-      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
-      padding:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      padding:24px;
       border-radius:12px;
       box-shadow:var(--card-shadow);
+      backdrop-filter: blur(4px);
     }
 
     .intro h2{
@@ -82,7 +85,7 @@
 
     .animations-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:20px;
       margin-top:20px;
     }
@@ -93,11 +96,16 @@
       border-radius:var(--radius);
       box-shadow:var(--card-shadow);
       border:1px solid rgba(0,0,0,0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
     }
 
     .card img{
       width:100%;
-      height:160px;
+      height:180px;
       object-fit:cover;
       border-radius:10px;
     }
@@ -110,25 +118,27 @@
     .card p{
       margin:0 0 12px;
       color:#555;
+      font-size: 0.95rem;
     }
 
     .btn{
       display:inline-block;
-      padding:10px 14px;
+      padding:10px 18px;
       border-radius:12px;
       background:linear-gradient(180deg,var(--accent-red),var(--deep-red));
       color:#fff;
       text-decoration:none;
       font-weight:700;
-      box-shadow:0 6px 12px rgba(0,0,0,0.12);
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
     }
 
     footer{
       max-width:var(--max-width);
       margin:36px auto 80px;
       text-align:center;
-      color:#6b4f4a;
+      color:#fff; /* Changed to white for better contrast on red background */
       font-size:14px;
+      opacity: 0.9;
     }
 
     .footer-stripe{
@@ -140,8 +150,7 @@
     }
 
     @media (max-width:560px){
-      header.hero{height:240px}
-      .card img{height:140px}
+      .card img{height:160px}
     }
   </style>
 </head>
@@ -151,12 +160,16 @@
   <header class="hero">
     <video
       class="banner-video"
-      src="assets/banner.mp4"
       autoplay
       loop
       muted
       playsinline
-    ></video>
+      webkit-playsinline
+      preload="auto"
+    >
+      <source src="assets/banner.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </header>
 
   <main class="content">
@@ -175,48 +188,44 @@
 
     <section class="animations-grid" aria-live="polite">
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 1">
+        <img src="assets/placeholder.jpg" alt="Фильм 1">
         <h3>Фильм 1</h3>
         <p>Как коты в поезде ехали</p>
         <a class="btn" href="animations/animation1.html">Open</a>
       </div>
 
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 2">
+        <img src="assets/placeholder.jpg" alt="Фильм 2">
         <h3>Фильм 2</h3>
         <p>Как кот цыплачка в театр водил</p>
         <a class="btn" href="animations/animation2.html">Open</a>
       </div>
 
-      <!-- Animation 3 -->
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 3">
+        <img src="assets/placeholder.jpg" alt="Фильм 3">
         <h3>Фильм 3</h3>
         <p>Противостояние</p>
         <a class="btn" href="animations/animation3.html">Open</a>
       </div>
 
-      <!-- Animation 4 -->
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 4">
+        <img src="assets/placeholder.jpg" alt="Фильм 4">
         <h3>Фильм 4</h3>
         <p>Как мы были на фестивале "Русское Лето"</p>
         <a class="btn" href="animations/animation4.html">Open</a>
       </div>
 
-      <!-- Animation 5 -->
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 5">
+        <img src="assets/placeholder.jpg" alt="Фильм 5">
         <h3>Фильм 5</h3>
         <p>Нежданное Путешествие</p>
         <a class="btn" href="animations/animation5.html">Open</a>
       </div>
 
-      <!-- Animation 6 -->
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Placeholder image for Animation 6">
-        <h3>Animation 6 — Fireplace Stories</h3>
-        <p>Gathered around telling old family stories. (Placeholder)</p>
+        <img src="assets/placeholder.jpg" alt="Animation 6">
+        <h3>Фильм 6</h3>
+        <p>Fireplace Stories — Gathered around telling old family stories.</p>
         <a class="btn" href="animations/animation6.html">Open</a>
       </div>
     </section>
