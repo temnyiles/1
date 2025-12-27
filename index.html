@@ -44,16 +44,18 @@
     header.hero {
       width: 100%;
       height: auto;
-      line-height: 0; /* Removes bottom whitespace gap */
+      min-height: 200px; /* Ensures space is reserved */
+      background: #000;
+      line-height: 0;
       overflow: hidden;
-      background: #000; /* Fallback color */
     }
 
     .banner-video {
       width: 100%;
       height: auto;
       display: block;
-      object-fit: cover;
+      /* Ensures the video covers the area nicely */
+      object-fit: contain; 
     }
 
     /* ---------- CONTENT ---------- */
@@ -65,21 +67,20 @@
     }
 
     .intro{
-      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      background:rgba(255, 255, 255, 0.9);
       padding:24px;
       border-radius:12px;
       box-shadow:var(--card-shadow);
-      backdrop-filter: blur(4px);
     }
 
     .intro h2{
-      margin:0 0 6px;
+      margin:0 0 10px;
       color:var(--deep-red);
     }
 
     .intro p{
       margin:0;
-      color:#444;
+      color:#333;
       line-height:1.6;
     }
 
@@ -91,16 +92,11 @@
     }
 
     .card{
-      background:linear-gradient(180deg,#fff, #fff9f6);
-      padding:14px;
+      background:#fff;
+      padding:16px;
       border-radius:var(--radius);
       box-shadow:var(--card-shadow);
-      border:1px solid rgba(0,0,0,0.04);
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
+      text-align: left;
     }
 
     .card img{
@@ -111,46 +107,43 @@
     }
 
     .card h3{
-      margin:10px 0 6px;
+      margin:12px 0 6px;
       color:var(--deep-red);
     }
 
     .card p{
-      margin:0 0 12px;
+      margin:0 0 15px;
       color:#555;
-      font-size: 0.95rem;
     }
 
     .btn{
       display:inline-block;
-      padding:10px 18px;
+      padding:12px 20px;
       border-radius:12px;
       background:linear-gradient(180deg,var(--accent-red),var(--deep-red));
       color:#fff;
       text-decoration:none;
       font-weight:700;
-      box-shadow:0 4px 10px rgba(0,0,0,0.15);
     }
 
     footer{
-      max-width:var(--max-width);
-      margin:36px auto 80px;
+      margin:40px auto;
       text-align:center;
-      color:#fff; /* Changed to white for better contrast on red background */
-      font-size:14px;
-      opacity: 0.9;
+      color:#fff;
     }
 
     .footer-stripe{
-      height:10px;
-      background:linear-gradient(90deg,var(--deep-red),var(--accent-red));
-      border-radius:6px;
+      height:6px;
+      background:var(--gold);
+      width:100px;
       margin:10px auto;
-      width:160px;
+      border-radius:3px;
     }
 
+    /* Removed the fixed height on mobile that might be causing the black screen/cropping */
     @media (max-width:560px){
-      .card img{height:160px}
+      header.hero{ height: auto; }
+      .card img{ height: 160px; }
     }
   </style>
 </head>
@@ -159,12 +152,14 @@
 
   <header class="hero">
     <video
+      id="mainVideo"
       class="banner-video"
       autoplay
       loop
       muted
       playsinline
       webkit-playsinline
+      poster="assets/placeholder.jpg"
       preload="auto"
     >
       <source src="assets/banner.mp4" type="video/mp4">
@@ -177,64 +172,53 @@
       <h2>Добро пожаловать!</h2>
       <p>
         Вот и закончился столь знаменательный для нашей семьи 2025 год.
-        В этом году было много интересных событий и незабываемых моментов,
-        и я очень надеюсь, что в наступающем 2026 мы сможем многого достичь
-        и испытаем море позитивных эмоций! ✨
-        <br><br>
-        Перед вами своего рода семейный альбом, который поможет вам вспомнить
-        некоторые из важнейших событий уходящего года.
+        В этом году было много интересных событий и незабываемых моментов...
       </p>
     </section>
 
-    <section class="animations-grid" aria-live="polite">
+    <section class="animations-grid">
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Фильм 1">
+        <img src="assets/placeholder.jpg" alt="Film 1">
         <h3>Фильм 1</h3>
         <p>Как коты в поезде ехали</p>
         <a class="btn" href="animations/animation1.html">Open</a>
       </div>
 
       <div class="card">
-        <img src="assets/placeholder.jpg" alt="Фильм 2">
+        <img src="assets/placeholder.jpg" alt="Film 2">
         <h3>Фильм 2</h3>
         <p>Как кот цыплачка в театр водил</p>
         <a class="btn" href="animations/animation2.html">Open</a>
       </div>
-
-      <div class="card">
-        <img src="assets/placeholder.jpg" alt="Фильм 3">
-        <h3>Фильм 3</h3>
-        <p>Противостояние</p>
-        <a class="btn" href="animations/animation3.html">Open</a>
-      </div>
-
-      <div class="card">
-        <img src="assets/placeholder.jpg" alt="Фильм 4">
-        <h3>Фильм 4</h3>
-        <p>Как мы были на фестивале "Русское Лето"</p>
-        <a class="btn" href="animations/animation4.html">Open</a>
-      </div>
-
-      <div class="card">
-        <img src="assets/placeholder.jpg" alt="Фильм 5">
-        <h3>Фильм 5</h3>
-        <p>Нежданное Путешествие</p>
-        <a class="btn" href="animations/animation5.html">Open</a>
-      </div>
-
-      <div class="card">
-        <img src="assets/placeholder.jpg" alt="Animation 6">
-        <h3>Фильм 6</h3>
-        <p>Fireplace Stories — Gathered around telling old family stories.</p>
-        <a class="btn" href="animations/animation6.html">Open</a>
-      </div>
-    </section>
+      
+      </section>
   </main>
 
   <footer>
     <div class="footer-stripe"></div>
-    <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
+    <p>От Манчкина с Любовью</p>
   </footer>
+
+  <script>
+    // Force play script for mobile browsers
+    window.addEventListener('load', function() {
+      var video = document.getElementById('mainVideo');
+      
+      // Try to play manually if autoplay was blocked
+      var promise = video.play();
+
+      if (promise !== undefined) {
+        promise.then(_ => {
+          // Autoplay started!
+        }).catch(error => {
+          // Autoplay was prevented. 
+          // We can show a 'Play' button here if needed, 
+          // but usually, a 'muted' video with 'playsinline' works.
+          console.log("Autoplay prevented, trying to play on interaction");
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
