@@ -80,11 +80,11 @@
       line-height:1.6;
     }
 
-    .animations-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:20px;
-      margin-top:20px;
+    .animations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 per row on desktop */
+      gap: 20px;
+      margin-top: 20px;
     }
 
     .card{
@@ -139,10 +139,11 @@
       width:160px;
     }
 
-    @media (max-width:560px){
-      header.hero{height:240px}
-      .card img{height:140px}
+  @media (max-width: 600px) {
+    .animations-grid {
+      grid-template-columns: 1fr; /* 1 per row */
     }
+  }
   </style>
 </head>
 
