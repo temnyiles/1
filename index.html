@@ -39,42 +39,6 @@
       padding-bottom:60px;
     }
 
-    /* ---------- VIDEO BANNER ---------- */
-    .video-banner {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensures video covers the area */
-      opacity: 0.9;
-    }
-
-    /* Fallback for browsers that don't support object-fit */
-    @supports not (object-fit: cover) {
-      .video-banner {
-        width: 100%;
-        height: auto;
-        min-width: 100%;
-        min-height: 100%;
-        top: 0;
-        left: 0;
-        transform: none;
-      }
-    }
-
-    /* Fade effect at bottom */
-    .video-fade {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 30%;
-      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
-      pointer-events: none;
-    }
-
     /* ---------- CONTENT ---------- */
 
     main.content{
@@ -169,49 +133,16 @@
       width:160px;
     }
 
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-      .video-banner-wrapper {
-        height: 40vh; /* Shorter on mobile */
-        max-height: 350px;
-        min-height: 250px;
-      }
-    }
-
     @media (max-width: 560px){
-      .video-banner-wrapper {
-        height: 35vh;
-        max-height: 300px;
-        min-height: 200px;
-      }
-      
       .card img{height:160px}
-      
       .animations-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
-      }
-    }
-
-    /* For very small screens */
-    @media (max-width: 400px) {
-      .video-banner-wrapper {
-        height: 30vh;
-        min-height: 180px;
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Video Banner Section -->
-  <div class="video-banner-wrapper">
-    <video class="video-banner" autoplay loop muted>
-      <source src="assets/banner.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="video-fade"></div>
-  </div>
 
   <main class="content">
     <section class="intro">
