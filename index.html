@@ -87,7 +87,9 @@
       transition:transform 0.2s ease;
     }
 
-    .card:hover{ transform:translateY(-4px); }
+    .card:hover{
+      transform:translateY(-4px);
+    }
 
     .card img{
       width:100%;
@@ -143,7 +145,7 @@
       muted
       loop
       playsinline
-      preload="metadata"
+      preload="auto"
     >
       <source src="assets/banner.mp4" type="video/mp4">
     </video>
@@ -215,15 +217,15 @@
     <p>От Манчкина с Любовью • Vintage Christmas Collection</p>
   </footer>
 
-  <!-- SMART AUTOPLAY FALLBACK -->
+  <!-- ANDROID-SAFE AUTOPLAY FALLBACK -->
   <script>
     const video = document.getElementById('bannerVideo');
+    let tried = false;
 
-    // Only force play if autoplay failed
-    video.addEventListener('canplay', () => {
-      if (video.paused) {
-        const p = video.play();
-        if (p) p.catch(() => {});
+    video.addEventListener('loadeddata', () => {
+      if (video.paused && !tried) {
+        tried = true;
+        video.play().catch(() => {});
       }
     });
   </script>
