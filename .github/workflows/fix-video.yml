@@ -1,0 +1,26 @@
+name: Fix MP4 for Web
+
+on:
+  workflow_dispatch:
+
+jobs:
+  faststart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Convert video to faststart
+        run: |
+          ffmpeg -i assets/banner.mp4 -c copy -movflags +faststart assets/banner_fixed.mp4
+
+      - name: Replace original video
+        run: |
+          mv assets/banner_fixed.mp4 assets/banner.mp4
+
+      - name: Commit fixed video
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/banner.mp4
+          git commit -m "Fix banner video for web streaming"
+          git push
