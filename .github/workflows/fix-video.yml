@@ -3,9 +3,13 @@ name: Fix MP4 for Web
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   faststart:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -27,5 +31,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add assets/banner.mp4
-          git commit -m "Fix banner video for web streaming"
+          git commit -m "Fix banner video for web streaming" || echo "No changes to commit"
           git push
